@@ -162,6 +162,8 @@
     <ClInclude Include="filesystem.h" />
     <ClInclude Include="game_object.h" />
     <ClInclude Include="gui.h" />
+    <ClInclude Include="gui_log.h" />
+    <ClInclude Include="gui_objects.h" />
     <ClInclude Include="imgui\imconfig.h" />
     <ClInclude Include="imgui\imgui.h" />
     <ClInclude Include="imgui\imgui_impl_glfw.h" />

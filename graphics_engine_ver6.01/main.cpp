@@ -44,7 +44,6 @@ int main() {
     while (!glfwWindowShouldClose(engine.window))
     {
 
-        gui.newGuiFrame();
 
         float currentFrame = glfwGetTime();
         deltaTime = currentFrame - lastFrame;
@@ -54,10 +53,12 @@ int main() {
         
         glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        gui.newGuiFrame();
 
         engine.render();
-        
-        gui.displayGui(engine);
+
+
+        gui.displayGui(engine, editMode);
 
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
@@ -146,7 +147,15 @@ void mouse_callback(GLFWwindow* window, double xposIn, double yposIn)
 // ----------------------------------------------------------------------
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 {
-    engine.camera.ProcessMouseScroll(static_cast<float>(yoffset));
+    if (!editMode)
+    {
+        engine.camera.ProcessMouseScroll(static_cast<float>(yoffset));
+    }
+}
+
+void processMousInput()
+{
+
 }
 
 // utility function for loading a 2D texture from file

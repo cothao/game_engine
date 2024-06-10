@@ -1,17 +1,17 @@
 #include "cube.h"
 #include "shader.h"
 
-Cube::Cube(const Shader& shader, glm::vec3 scale, glm::vec3 position, float rotate, glm::vec3 rotateDir, glm::vec3 color)
+Cube::Cube(const Shader& shader, glm::vec3 scale, glm::vec3 position, glm::vec3 color)
     :
     shader(shader),
     Scale(scale),
     Position(position),
-    Rotate(rotate),
-    RotateDir(rotateDir),
-    Color(color)
+    Color(color),
+    ID{id_generator++}
 {
 	this->shader = shader;
     this->initData();
+    std::cout << this->ID << "\n";
 }
 
 void Cube::initData()
@@ -97,7 +97,9 @@ void Cube::render(glm::mat4 projection, glm::mat4 view, glm::vec3 cameraPos, glm
 
     model = glm::translate(model, this->Position);
 
-    model = glm::rotate(model, glm::radians(this->Rotate), this->RotateDir);
+    model = glm::rotate(model, this->RotateX, this->RotateDirX);
+    model = glm::rotate(model, this->RotateY, this->RotateDirY);
+        model = glm::rotate(model, this->RotateZ, this->RotateDirZ);
 
     model = glm::scale(model, this->Scale);
 

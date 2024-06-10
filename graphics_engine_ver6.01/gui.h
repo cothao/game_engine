@@ -11,12 +11,12 @@ class Gui
 public:
 
 	float Position[3]	=	{1.,1.,1.};
-	float cubePos[3]	=	{1., 2., 3.};
+	float Color[3]		=	{1.,1.,1.};
 
 	Gui();
 
 	virtual void initGui(Engine engine);
-	virtual void displayGui(Engine& engine);
+	virtual void displayGui(Engine& engine, bool editMode);
 	virtual void newGuiFrame();
 
 };

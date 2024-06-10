@@ -50,7 +50,7 @@ void Engine::initObjects()
 
     this->planes = { *new Plane(pShader) };
 }
-
+    
 void Engine::render()
 {
 
