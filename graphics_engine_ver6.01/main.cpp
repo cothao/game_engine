@@ -1,8 +1,6 @@
-#include "imgui.h"
-#include "imgui_impl_glfw.h"
-#include "imgui_impl_opengl3.h"
 #include "engine.h"
 #include "gui.h"
+#include <commdlg.h>
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
@@ -24,7 +22,6 @@ int k = 0;
 bool firstMouse = true;
 Engine engine = Engine();
 Gui gui = Gui();
-
 
 int main() {
 
@@ -49,6 +46,7 @@ int main() {
         deltaTime = currentFrame - lastFrame;
         lastFrame = currentFrame;
 
+
         processInput(engine.window);
         
         glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
@@ -56,7 +54,6 @@ int main() {
         gui.newGuiFrame();
 
         engine.render();
-
 
         gui.displayGui(engine, editMode);
 
@@ -82,13 +79,19 @@ void processInput(GLFWwindow* window)
         glfwSetWindowShouldClose(window, true);
 
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-        engine.camera.ProcessKeyboard(FORWARD, deltaTime);
+    {
+        //engine.camera.ProcessKeyboard(FORWARD, deltaTime);
+        engine.models[0].Position.z += 1.0f * deltaTime;
+    }
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-        engine.camera.ProcessKeyboard(BACKWARD, deltaTime);
+    {
+        //engine.camera.ProcessKeyboard(BACKWARD, deltaTime);
+        engine.models[0].Position.z -= 1.0f * deltaTime;
+    }
     if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-        engine.camera.ProcessKeyboard(LEFT, deltaTime);
+        //engine.camera.ProcessKeyboard(LEFT, deltaTime);
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-        engine.camera.ProcessKeyboard(RIGHT, deltaTime);
+        //engine.camera.ProcessKeyboard(RIGHT, deltaTime);
     if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS)  {
         glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
         editMode = true;

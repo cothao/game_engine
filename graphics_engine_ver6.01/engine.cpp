@@ -5,7 +5,7 @@ Engine::Engine()
 {
 
 }
-float r = 0.0;
+
 int Engine::initEngine()
 {
     glfwInit();
@@ -34,23 +34,25 @@ int Engine::initEngine()
         return -1;
     }
 
-    stbi_set_flip_vertically_on_load(true);
-
     glEnable(GL_DEPTH_TEST);
-
 }
 
 void Engine::initObjects()
 {
+    this->shaderDirectory["pShader"] = Shader("./pShader.vs", "./pShader.fs");
+    this->shaderDirectory["lShader"] = Shader("./lightShader.vs", "./lightShader.fs");
+    this->shaderDirectory["mShader"] = Shader("./modelShader.vs", "./modelShader.fs");
 
-    Shader pShader("./pShader.vs", "./pShader.fs");
-    Shader lShader("./lightShader.vs", "./lightShader.fs");
+    this->lights = { *new Light(this->shaderDirectory["lShader"], glm::vec3(6., 2., 3.))};
+    this->models = {
+        *new Model("./assets/guy/guy.obj", false,glm::vec3(1.0),glm::vec3(0.005)),
+        * new Model("C:/Users/colli/OneDrive/Documents/resources/backpack.obj", true,glm::vec3(1.0),glm::vec3(0.5)),
+        *new Model("C:/Users/colli/OneDrive/Documents/resources/donut/donut.obj", true,glm::vec3(1.0, 1.0, 5.0),glm::vec3(10.0)),
 
-    this->lights = { *new Light(lShader, glm::vec3(6., 2., 3.)) };
-
-    this->planes = { *new Plane(pShader) };
-}
+    };
+    this->planes = { *new Plane(this->shaderDirectory["pShader"])};
     
+}
 void Engine::render()
 {
 
@@ -62,15 +64,16 @@ void Engine::render()
         for (Light &light : this->lights)
         {
             light.render(this->projection, this->view, glm::vec3(0.3), glm::vec3(6., 0.8, sin(glfwGetTime())), 0.0, glm::vec3(1., 0., 0.), glm::vec3(1., 1., 1.));
-            //this->lights[0].pos = glm::vec3(6., 0.8, 1.);
         }
-        int i = 1;
 
         for (Cube &cube : this->cubes)
         {
             cube.render(this->projection, this->view, this->camera.Position, this->lights[0].pos);
-            std::cout << "Cube" << " " << i << ":" << cube.Position.x << "\n";
-            i++;
+        }
+
+        for (Model model: this->models)
+        {
+            model.Draw(this->shaderDirectory["mShader"], this->projection,this->view, this->camera.Position);
         }
 
         for (Plane plane : this->planes)

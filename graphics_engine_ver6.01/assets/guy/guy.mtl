@@ -1,0 +1,361 @@
+newmtl Basic_T_shirts
+    Ns 1.000000
+    d 1.000000
+    Ka 0.588235 0.588235 0.588235
+    Kd 1.000000 1.000000 1.000000
+    Ks 0.000000 0.000000 0.000000
+    map_Kd Basic_T_shirts_diffuse.jpg
+    norm Basic_T_shirts_normal.png
+    map_Pr Basic_T_shirts_roughness.jpg
+    glow Basic_T_shirts_glow.jpg
+    ao Basic_T_shirts_ao.jpg
+newmtl Std_Cornea_R
+    Ns 11.000000
+    d 0.800000
+    Ka 0.196078 0.196078 0.196078
+    Kd 1.000000 1.000000 1.000000
+    Ks 0.000000 0.000000 0.000000
+    map_Kd Std_Cornea_R_diffuse.jpg
+    map_Pm Std_Cornea_R_metallic.jpg
+    map_Pr Std_Cornea_R_roughness.jpg
+    ao Std_Cornea_R_ao.jpg
+    Shader__IrisNormal Std_Cornea_R_IrisNormal.png
+    Shader__ScleraNormal Std_Cornea_R_ScleraNormal.png
+    Shader__IrisDisplacement Std_Cornea_R_IrisDisplacement.hdr
+    Shader__EyeBlendMap2 Std_Cornea_R_EyeBlendMap2.jpg
+    Shader__InnerIrisMask Std_Cornea_R_InnerIrisMask.png
+    Shader__Sclera Std_Cornea_R_Sclera.jpg
+newmtl Hair
+    Ns 2.000000
+    d 1.000000
+    Ka 0.490196 0.490196 0.490196
+    Kd 1.000000 1.000000 1.000000
+    Ks 0.900000 0.900000 0.900000
+    map_Kd Hair_diffuse.png
+    map_D Hair_opacity.jpg
+    map_Ks Hair_specular.png
+    map_Pm Hair_metallic.png
+    map_Pr Hair_roughness.png
+    blend Hair_blend.jpg
+    ao Hair_ao.jpg
+    Shader__HairRootMap Hair_HairRootMap.jpg
+    Shader__HairIDMap Hair_HairIDMap.png
+    Shader__HairFlowMap Hair_HairFlowMap.png
+newmtl Scalp
+    Ns 100.000000
+    d 1.000000
+    Ka 0.490196 0.490196 0.490196
+    Kd 1.000000 1.000000 1.000000
+    Ks 1.000000 1.000000 1.000000
+    map_Kd Scalp_diffuse.jpg
+    map_D Scalp_opacity.jpg
+    map_Pm Scalp_metallic.png
+    map_Pr Scalp_roughness.png
+newmtl Std_Skin_Body
+    Ns 20.000000
+    d 1.000000
+    Ka 0.490196 0.490196 0.490196
+    Kd 1.000000 1.000000 1.000000
+    Ks 0.269400 0.269400 0.269400
+    map_Kd Std_Skin_Body_diffuse.jpg
+    norm Std_Skin_Body_normal.jpg
+    map_Pm Std_Skin_Body_metallic.jpg
+    map_Pr Std_Skin_Body_roughness.jpg
+    ao Std_Skin_Body_ao.jpg
+    Shader__TransmissionMap Std_Skin_Body_TransmissionMap.png
+    Shader__RGBAAreaMask Std_Skin_Body_RGBAAreaMask.tga
+    Shader__SSSMap Std_Skin_Body_SSSMap.png
+    Shader__MicroNormal Std_Skin_Body_MicroNormal.png
+    Shader__MicroNormalMask Std_Skin_Body_MicroNormalMask.jpg
+newmtl Std_Nails
+    Ns 20.000000
+    d 1.000000
+    Ka 0.490196 0.490196 0.490196
+    Kd 1.000000 1.000000 1.000000
+    Ks 0.269400 0.269400 0.269400
+    map_Kd Std_Nails_diffuse.jpg
+    norm Std_Nails_normal.jpg
+    map_Pm Std_Nails_metallic.jpg
+    map_Pr Std_Nails_roughness.jpg
+    ao Std_Nails_ao.jpg
+    Shader__TransmissionMap Std_Nails_TransmissionMap.png
+    Shader__RGBAAreaMask Std_Nails_RGBAAreaMask.tga
+    Shader__SSSMap Std_Skin_Body_MicroNormalMask.jpg
+    Shader__MicroNormal Std_Skin_Body_MicroNormal.png
+    Shader__MicroNormalMask Std_Skin_Body_MicroNormalMask.jpg
+newmtl Std_Eye_R
+    Ns 20.000000
+    d 1.000000
+    Ka 0.196078 0.196078 0.196078
+    Kd 1.000000 1.000000 1.000000
+    Ks 0.898039 0.898039 0.898039
+    map_Kd Std_Eye_R_diffuse.jpg
+    norm Std_Eye_R_normal.jpg
+    map_Pm Std_Eye_R_metallic.jpg
+    map_Pr Std_Eye_R_roughness.jpg
+newmtl Std_Eye_L
+    Ns 20.000000
+    d 1.000000
+    Ka 0.196078 0.196078 0.196078
+    Kd 1.000000 1.000000 1.000000
+    Ks 0.898039 0.898039 0.898039
+    map_Kd Std_Eye_L_diffuse.jpg
+    norm Std_Eye_L_normal.jpg
+    map_Pm Std_Eye_L_metallic.jpg
+    map_Pr Std_Eye_L_roughness.jpg
+newmtl Beard
+    Ns 50.000000
+    d 1.000000
+    Ka 0.490196 0.490196 0.490196
+    Kd 1.000000 1.000000 1.000000
+    Ks 0.500000 0.500000 0.500000
+    map_Kd Beard_diffuse.png
+    map_D Beard_opacity.jpg
+    map_Ks Beard_specular.png
+    map_Pm Beard_metallic.png
+    map_Pr Beard_roughness.png
+    ao Beard_ao.jpg
+    Shader__HairRootMap Beard_HairRootMap.jpg
+    Shader__HairIDMap Beard_HairIDMap.png
+    Shader__HairFlowMap Beard_HairFlowMap.png
+newmtl Beard_00
+    Ns 50.000000
+    d 1.000000
+    Ka 0.490196 0.490196 0.490196
+    Kd 1.000000 1.000000 1.000000
+    Ks 1.000000 1.000000 1.000000
+    map_Kd Beard_00_diffuse.png
+    map_D Beard_00_opacity.jpg
+    map_Ks Beard_00_specular.png
+    map_Pm Beard_00_metallic.png
+    map_Pr Beard_00_roughness.png
+    ao Beard_00_ao.jpg
+    Shader__HairRootMap Beard_00_HairRootMap.jpg
+    Shader__HairIDMap Beard_00_HairIDMap.png
+    Shader__HairFlowMap Beard_00_HairFlowMap.png
+newmtl Sport_sneakers
+    Ns 1.000000
+    d 1.000000
+    Ka 0.588235 0.588235 0.588235
+    Kd 1.000000 1.000000 1.000000
+    Ks 1.000000 1.000000 1.000000
+    map_Kd Sport_sneakers_diffuse.jpg
+    norm Sport_sneakers_normal.jpg
+    map_Pm Sport_sneakers_metallic.jpg
+    map_Pr Sport_sneakers_roughness.jpg
+    ao Sport_sneakers_ao.jpg
+newmtl Std_Tongue
+    Ns 2.000000
+    d 1.000000
+    Ka 0.490196 0.490196 0.490196
+    Kd 1.000000 1.000000 1.000000
+    Ks 0.900000 0.900000 0.900000
+    map_Kd Std_Tongue_diffuse.jpg
+    norm Std_Tongue_normal.jpg
+    map_Pm Std_Tongue_metallic.jpg
+    map_Pr Std_Tongue_roughness.jpg
+    ao Std_Tongue_ao.jpg
+    Shader__MicroNormal Std_Skin_Body_MicroNormal.png
+    Shader__GradientAO Std_Tongue_GradientAO.jpg
+newmtl Std_Eye_Occlusion_L
+    Ns 1.000000
+    d 1.000000
+    Ka 0.000000 0.000000 0.000000
+    Kd 1.000000 1.000000 1.000000
+    Ks 0.000000 0.000000 0.000000
+    map_Kd Std_Eye_Occlusion_L_diffuse.jpg
+    map_D Std_Eye_Occlusion_L_opacity.jpg
+    map_Pm Std_Eye_Occlusion_L_metallic.jpg
+    map_Pr Std_Eye_Occlusion_L_roughness.jpg
+    Shader__EyeOcclusion Std_Eye_Occlusion_L_EyeOcclusion.png
+newmtl Std_Eye_Occlusion_R
+    Ns 1.000000
+    d 1.000000
+    Ka 0.000000 0.000000 0.000000
+    Kd 1.000000 1.000000 1.000000
+    Ks 0.000000 0.000000 0.000000
+    map_Kd Std_Eye_Occlusion_R_diffuse.jpg
+    map_D Std_Eye_Occlusion_L_opacity.jpg
+    map_Pm Std_Eye_Occlusion_R_metallic.jpg
+    map_Pr Std_Eye_Occlusion_R_roughness.jpg
+    Shader__EyeOcclusion Std_Eye_Occlusion_L_EyeOcclusion.png
+newmtl Std_Skin_Leg
+    Ns 20.000000
+    d 1.000000
+    Ka 0.490196 0.490196 0.490196
+    Kd 1.000000 1.000000 1.000000
+    Ks 0.269400 0.269400 0.269400
+    map_Kd Std_Skin_Leg_diffuse.jpg
+    norm Std_Skin_Leg_normal.jpg
+    map_Pm Std_Skin_Leg_metallic.jpg
+    map_Pr Std_Skin_Leg_roughness.jpg
+    ao Std_Skin_Leg_ao.jpg
+    Shader__TransmissionMap Std_Skin_Leg_TransmissionMap.png
+    Shader__RGBAAreaMask Std_Skin_Leg_RGBAAreaMask.tga
+    Shader__SSSMap Std_Skin_Leg_SSSMap.png
+    Shader__MicroNormal Std_Skin_Body_MicroNormal.png
+    Shader__MicroNormalMask Std_Skin_Body_MicroNormalMask.jpg
+newmtl Std_Skin_Head
+    Ns 20.000000
+    d 1.000000
+    Ka 0.490196 0.490196 0.490196
+    Kd 1.000000 1.000000 1.000000
+    Ks 0.269400 0.269400 0.269400
+    map_Kd Std_Skin_Head_diffuse.png
+    norm Std_Skin_Head_normal.jpg
+    map_Pm Std_Skin_Head_metallic.jpg
+    map_Pr Std_Skin_Head_roughness.jpg
+    ao Std_Skin_Head_ao.jpg
+    Shader__SpecularMask Std_Skin_Head_SpecularMask.jpg
+    Shader__TransmissionMap Std_Skin_Head_TransmissionMap.png
+    Shader__MouthCavityMaskandAO Std_Skin_Head_MouthCavityMaskandAO.tga
+    Shader__SSSMap Std_Skin_Head_SSSMap.jpg
+    Shader__MicroNormal Std_Skin_Body_MicroNormal.png
+    Shader__CheekForeUpperLipChinMask Std_Skin_Head_CheekForeUpperLipChinMask.tga
+    Shader__EarNeckMask Std_Skin_Head_EarNeckMask.tga
+    Shader__NoseMouthUpperInnerLidMask Std_Skin_Head_NoseMouthUpperInnerLidMask.tga
+    Shader__BaseColorBlend2 Std_Skin_Head_BaseColorBlend2.jpg
+    Shader__NormalMapBlend Std_Skin_Head_NormalMapBlend.jpg
+    Shader__MicroNormalMask Std_Skin_Head_MicroNormalMask.png
+    Shader__BlendMask Std_Skin_Head_BlendMask.png
+newmtl Std_Lower_Teeth
+    Ns 2.000000
+    d 1.000000
+    Ka 0.490196 0.490196 0.490196
+    Kd 1.000000 1.000000 1.000000
+    Ks 0.900000 0.900000 0.900000
+    map_Kd Std_Lower_Teeth_diffuse.jpg
+    norm Std_Lower_Teeth_normal.png
+    map_Pm Std_Lower_Teeth_metallic.jpg
+    map_Pr Std_Lower_Teeth_roughness.jpg
+    ao Std_Lower_Teeth_ao.jpg
+    Shader__MicroNormal Std_Lower_Teeth_MicroNormal.png
+    Shader__GradientAO Std_Tongue_GradientAO.jpg
+    Shader__GumsMask Std_Lower_Teeth_GumsMask.jpg
+newmtl Std_Cornea_L
+    Ns 11.000000
+    d 0.800000
+    Ka 0.196078 0.196078 0.196078
+    Kd 1.000000 1.000000 1.000000
+    Ks 0.000000 0.000000 0.000000
+    map_Kd Std_Cornea_L_diffuse.jpg
+    map_Pm Std_Cornea_L_metallic.jpg
+    map_Pr Std_Cornea_L_roughness.jpg
+    ao Std_Cornea_L_ao.jpg
+    Shader__IrisNormal Std_Cornea_R_IrisNormal.png
+    Shader__ScleraNormal Std_Cornea_R_ScleraNormal.png
+    Shader__IrisDisplacement Std_Cornea_R_IrisDisplacement.hdr
+    Shader__EyeBlendMap2 Std_Cornea_R_EyeBlendMap2.jpg
+    Shader__InnerIrisMask Std_Cornea_R_InnerIrisMask.png
+    Shader__Sclera Std_Cornea_R_Sclera.jpg
+newmtl Male_Bushy
+    Ns 10.000000
+    d 1.000000
+    Ka 0.501961 0.501961 0.501961
+    Kd 1.000000 0.984314 0.949020
+    Ks 1.000000 1.000000 1.000000
+    map_Kd Male_Bushy_diffuse.png
+    map_D Male_Bushy_opacity.jpg
+    map_Ks Male_Bushy_specular.png
+    map_Pm Male_Bushy_metallic.png
+    map_Pr Male_Bushy_roughness.jpg
+    Shader__HairRootMap Male_Bushy_HairRootMap.jpg
+    Shader__HairIDMap Male_Bushy_HairIDMap.jpg
+newmtl Male_Bushy_Base
+    Ns 10.000000
+    d 0.800000
+    Ka 0.501961 0.501961 0.501961
+    Kd 1.000000 1.000000 1.000000
+    Ks 1.000000 1.000000 1.000000
+    map_Kd Male_Bushy_Base_diffuse.png
+    map_D Male_Bushy_Base_opacity.png
+    map_Pm Male_Bushy_Base_metallic.png
+    map_Pr Male_Bushy_Base_roughness.png
+newmtl Std_Upper_Teeth
+    Ns 2.000000
+    d 1.000000
+    Ka 0.490196 0.490196 0.490196
+    Kd 1.000000 1.000000 1.000000
+    Ks 0.900000 0.900000 0.900000
+    map_Kd Std_Upper_Teeth_diffuse.jpg
+    norm Std_Upper_Teeth_normal.png
+    map_Pm Std_Upper_Teeth_metallic.jpg
+    map_Pr Std_Upper_Teeth_roughness.jpg
+    ao Std_Upper_Teeth_ao.jpg
+    Shader__MicroNormal Std_Lower_Teeth_MicroNormal.png
+    Shader__GradientAO Std_Tongue_GradientAO.jpg
+    Shader__GumsMask Std_Lower_Teeth_GumsMask.jpg
+newmtl Std_Tearline_L
+    Ns 1.000000
+    d 1.000000
+    Ka 0.000000 0.000000 0.000000
+    Kd 1.000000 1.000000 1.000000
+    Ks 0.000000 0.000000 0.000000
+    map_Kd Std_Tearline_L_diffuse.jpg
+    map_D Std_Tearline_L_opacity.jpg
+    map_Pm Std_Tearline_L_metallic.jpg
+    map_Pr Std_Tearline_L_roughness.jpg
+    Shader__Normal Std_Tearline_L_Normal.tga
+newmtl Std_Tearline_R
+    Ns 1.000000
+    d 1.000000
+    Ka 0.000000 0.000000 0.000000
+    Kd 1.000000 1.000000 1.000000
+    Ks 0.000000 0.000000 0.000000
+    map_Kd Std_Tearline_R_diffuse.jpg
+    map_D Std_Tearline_L_opacity.jpg
+    map_Pm Std_Tearline_R_metallic.jpg
+    map_Pr Std_Tearline_R_roughness.jpg
+    Shader__Normal Std_Tearline_L_Normal.tga
+newmtl Std_Eyelash
+    Ns 2.000000
+    d 1.000000
+    Ka 0.490196 0.490196 0.490196
+    Kd 1.000000 1.000000 1.000000
+    Ks 0.900000 0.900000 0.900000
+    map_Kd Std_Eyelash_diffuse.jpg
+    map_D Std_Eyelash_opacity.jpg
+    map_Pm Std_Eyelash_metallic.jpg
+    map_Pr Std_Eyelash_roughness.jpg
+newmtl Beard_01
+    Ns 50.000000
+    d 1.000000
+    Ka 0.490196 0.490196 0.490196
+    Kd 1.000000 1.000000 1.000000
+    Ks 0.500000 0.500000 0.500000
+    map_Kd Beard_01_diffuse.png
+    map_D Beard_01_opacity.jpg
+    map_Ks Beard_01_specular.png
+    map_Pm Beard_01_metallic.png
+    map_Pr Beard_01_roughness.png
+    ao Beard_01_ao.jpg
+    Shader__HairRootMap Beard_01_HairRootMap.jpg
+    Shader__HairIDMap Beard_01_HairIDMap.png
+    Shader__HairFlowMap Beard_01_HairFlowMap.png
+newmtl Std_Skin_Arm
+    Ns 20.000000
+    d 1.000000
+    Ka 0.490196 0.490196 0.490196
+    Kd 1.000000 1.000000 1.000000
+    Ks 0.269400 0.269400 0.269400
+    map_Kd Std_Skin_Arm_diffuse.jpg
+    norm Std_Skin_Arm_normal.jpg
+    map_Pm Std_Skin_Arm_metallic.jpg
+    map_Pr Std_Skin_Arm_roughness.jpg
+    ao Std_Skin_Arm_ao.jpg
+    Shader__TransmissionMap Std_Skin_Arm_TransmissionMap.png
+    Shader__RGBAAreaMask Std_Skin_Arm_RGBAAreaMask.tga
+    Shader__SSSMap Std_Skin_Arm_SSSMap.png
+    Shader__MicroNormal Std_Skin_Body_MicroNormal.png
+    Shader__MicroNormalMask Std_Skin_Body_MicroNormalMask.jpg
+newmtl Slim_fit_pants
+    Ns 2.000000
+    d 1.000000
+    Ka 0.588235 0.588235 0.588235
+    Kd 1.000000 1.000000 1.000000
+    Ks 0.900000 0.900000 0.900000
+    map_Kd Slim_fit_pants_diffuse.jpg
+    norm Slim_fit_pants_normal.jpg
+    map_Pm Slim_fit_pants_metallic.jpg
+    map_Pr Slim_fit_pants_roughness.jpg
+    ao Slim_fit_pants_ao.jpg

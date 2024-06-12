@@ -149,11 +149,14 @@
     <ClCompile Include="imgui\imgui_widgets.cpp" />
     <ClCompile Include="light.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="model.cpp" />
     <ClCompile Include="plane.cpp" />
+    <ClCompile Include="player.cpp" />
     <ClCompile Include="renderer.cpp" />
     <ClCompile Include="shader.cpp" />
     <ClCompile Include="shader.h" />
     <ClCompile Include="stb_image.cpp" />
+    <ClCompile Include="user_input.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="camera.h" />
@@ -177,14 +180,18 @@
     <ClInclude Include="mesh.h" />
     <ClInclude Include="model.h" />
     <ClInclude Include="plane.h" />
+    <ClInclude Include="player.h" />
     <ClInclude Include="renderer.h" />
     <ClInclude Include="stb_image.h" />
+    <ClInclude Include="user_input.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\..\Downloads\Donut.glb" />
     <None Include="..\..\..\..\OneDrive\Documents\resources\backpack.mtl" />
     <None Include="lightShader.fs" />
     <None Include="lightShader.vs" />
+    <None Include="modelShader.fs" />
+    <None Include="modelShader.vs" />
     <None Include="pShader.fs" />
     <None Include="pShader.vs" />
   </ItemGroup>

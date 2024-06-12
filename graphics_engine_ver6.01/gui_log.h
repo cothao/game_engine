@@ -5,6 +5,11 @@
 #include "imgui_impl_opengl3.h"
 #include "engine.h"
 #include "gui.h"
+#include <vector>
+
+
+std::vector<std::string> logs;
+
 
 void displayLog(bool editMode)
 {
@@ -13,6 +18,12 @@ void displayLog(bool editMode)
 	{
 	if (ImGui::Begin("Log", NULL, ImGuiWindowFlags_NoCollapse))
 	{
+
+		for (std::string log: logs)
+		{
+			ImGui::Text(log.c_str());
+		}
+
 		ImGui::End();
 	}
 

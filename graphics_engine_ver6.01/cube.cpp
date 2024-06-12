@@ -99,7 +99,7 @@ void Cube::render(glm::mat4 projection, glm::mat4 view, glm::vec3 cameraPos, glm
 
     model = glm::rotate(model, this->RotateX, this->RotateDirX);
     model = glm::rotate(model, this->RotateY, this->RotateDirY);
-        model = glm::rotate(model, this->RotateZ, this->RotateDirZ);
+    model = glm::rotate(model, this->RotateZ, this->RotateDirZ);
 
     model = glm::scale(model, this->Scale);
 

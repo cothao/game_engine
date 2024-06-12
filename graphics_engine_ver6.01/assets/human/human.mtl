@@ -1,0 +1,11 @@
+newmtl Sport_sneakers
+    Ns 1.000000
+    d 1.000000
+    Ka 0.588235 0.588235 0.588235
+    Kd 1.000000 1.000000 1.000000
+    Ks 1.000000 1.000000 1.000000
+    map_Kd Sport_sneakers_diffuse.jpg
+    norm Sport_sneakers_normal.jpg
+    map_Pm Sport_sneakers_metallic.jpg
+    map_Pr Sport_sneakers_roughness.jpg
+    ao Sport_sneakers_ao.jpg

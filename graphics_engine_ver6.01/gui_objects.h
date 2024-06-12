@@ -19,6 +19,14 @@ void displayObjectsInterface(Engine& engine, bool editMode,Gui& gui)
             if (ImGui::BeginTabBar("MenuItems"))
             {
 
+                if (ImGui::BeginTabItem("Create Model"))
+                {
+
+
+
+                    ImGui::EndTabItem();
+                }
+
                 if (ImGui::BeginTabItem("Create Object"))
                 {
                     if (ImGui::BeginTabBar("Create Object"))
@@ -119,6 +127,46 @@ void displayObjectsInterface(Engine& engine, bool editMode,Gui& gui)
                             ImGui::EndTabItem();
                         }
 
+                        if (ImGui::BeginTabItem("Models"))
+                        {
+                            for (Model& model : engine.models)
+                            {
+                                std::string label = "Model##" + std::to_string(model.ID);
+                                std::string labelX = "X##" + std::to_string(model.ID);
+                                std::string labelY = "Y##" + std::to_string(model.ID);
+                                std::string labelZ = "Z##" + std::to_string(model.ID);
+                                std::string modelNo = "Model##" + std::to_string(model.ID);
+                                std::string labelX_Angle = "X_Angle##" + std::to_string(model.ID);
+                                std::string labelY_Angle = "Y_Angle##" + std::to_string(model.ID);
+                                std::string labelZ_Angle = "Z_Angle##" + std::to_string(model.ID);
+                                std::string button = "Reset Rotation##" + std::to_string(model.ID);
+                                if (ImGui::TreeNode(label.c_str()))
+                                {
+
+
+                                    ImGui::Text(modelNo.c_str());
+                                    ImGui::Text("Position");
+                                    ImGui::InputFloat(labelX.c_str(), &model.Position.x);
+                                    ImGui::InputFloat(labelY.c_str(), &model.Position.y);
+                                    ImGui::InputFloat(labelZ.c_str(), &model.Position.z);
+                                    ImGui::Text("Rotation");
+                                    ImGui::SliderAngle(labelX_Angle.c_str(), &model.RotateX);
+                                    ImGui::SliderAngle(labelY_Angle.c_str(), &model.RotateY);
+                                    ImGui::SliderAngle(labelZ_Angle.c_str(), &model.RotateZ);
+
+                                    if (ImGui::Button(button.c_str()))
+                                    {
+                                        model.RotateX = 0.0;
+                                        model.RotateY = 0.0;
+                                        model.RotateZ = 0.0;
+                                    }
+                                    ImGui::TreePop();
+                                }
+                                ImGui::Separator();
+                            }
+
+                            ImGui::EndTabItem();
+                        }
 
                         ImGui::EndTabBar();
                     }
