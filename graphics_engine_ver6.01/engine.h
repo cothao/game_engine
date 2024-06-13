@@ -30,6 +30,7 @@ public:
 	std::vector<Cube>				cubes;
 	std::vector<Plane>				planes;
 	std::vector<Model>				models;
+	std::vector<std::string>		logs;
 	Camera							camera		=	Camera(glm::vec3(10.0f, 3.0f, 1.0f));
 	glm::mat4						view		=	this->camera.GetViewMatrix();
 	const unsigned int				SCR_WIDTH	=	GetSystemMetrics(SM_CXSCREEN);

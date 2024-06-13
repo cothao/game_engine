@@ -11,7 +11,7 @@ Gui::Gui()
 void Gui::displayGui(Engine& engine, bool editMode)
 {
 
-    displayLog(editMode);
+    displayLog(editMode, engine);
     displayObjectsInterface(engine, editMode, *this);
 
 }

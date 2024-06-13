@@ -1,6 +1,5 @@
 #include "engine.h"
 
-
 Engine::Engine()
 {
 
@@ -46,8 +45,8 @@ void Engine::initObjects()
     this->lights = { *new Light(this->shaderDirectory["lShader"], glm::vec3(6., 2., 3.))};
     this->models = {
         *new Model("./assets/guy/guy.obj", false,glm::vec3(1.0),glm::vec3(0.005)),
-        * new Model("C:/Users/colli/OneDrive/Documents/resources/backpack.obj", true,glm::vec3(1.0),glm::vec3(0.5)),
-        *new Model("C:/Users/colli/OneDrive/Documents/resources/donut/donut.obj", true,glm::vec3(1.0, 1.0, 5.0),glm::vec3(10.0)),
+        //* new Model("C:/Users/colli/OneDrive/Documents/resources/backpack.obj", true,glm::vec3(1.0),glm::vec3(0.5)),
+        //*new Model("C:/Users/colli/OneDrive/Documents/resources/donut/donut.obj", true,glm::vec3(1.0, 1.0, 5.0),glm::vec3(10.0)),
 
     };
     this->planes = { *new Plane(this->shaderDirectory["pShader"])};
@@ -71,14 +70,26 @@ void Engine::render()
             cube.render(this->projection, this->view, this->camera.Position, this->lights[0].pos);
         }
 
-        for (Model model: this->models)
-        {
+        for (Model& model: this->models)
+        {   
+            glm::vec3 target = glm::vec3(0.);
+            glm::vec3 modelDir = glm::normalize(model.Position - target);
+            model.Right = glm::normalize(glm::cross(model.Up, modelDir));
+            model.Up = glm::normalize(glm::cross(modelDir, model.Right));
+
+            const float radius = 10.0f;
+            float camX = sin(glfwGetTime()) * radius;
+            float camZ = cos(glfwGetTime()) * radius;
+            glm::mat4 view;
+            view = glm::lookAt(glm::vec3(camX, 0.0, camZ), glm::vec3(0.0, 0.0, 0.0), glm::vec3(0.0, 1.0, 0.0));
             model.Draw(this->shaderDirectory["mShader"], this->projection,this->view, this->camera.Position);
+            logs.push_back("Forward Vector: " + model.getPosition());
         }
 
         for (Plane plane : this->planes)
         {
             plane.render(this->projection, this->view, glm::vec3(10.0), glm::vec3(1., -5., 1.), 90.0, glm::vec3(1., 0., 0.), glm::vec3(0.8, 0.8, 0.8), this->lights[0].pos, this->camera.Position);
         }
+        
     }
 }

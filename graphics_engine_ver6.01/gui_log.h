@@ -7,12 +7,20 @@
 #include "gui.h"
 #include <vector>
 
-
 std::vector<std::string> logs;
 
 
-void displayLog(bool editMode)
+//class DisplayLog
+//{
+//public:
+//	std::vector<std::string> log;
+//	DisplayLog();
+//};
+
+void displayLog(bool editMode, Engine engine)
 {
+
+	//DisplayLog log = DisplayLog();
 
 	if (editMode)
 	{
@@ -20,6 +28,11 @@ void displayLog(bool editMode)
 	{
 
 		for (std::string log: logs)
+		{
+			ImGui::Text(log.c_str());
+		}
+
+		for (std::string log : engine.logs)
 		{
 			ImGui::Text(log.c_str());
 		}

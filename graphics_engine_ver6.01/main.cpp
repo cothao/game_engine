@@ -80,18 +80,60 @@ void processInput(GLFWwindow* window)
 
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
     {
-        //engine.camera.ProcessKeyboard(FORWARD, deltaTime);
-        engine.models[0].Position.z += 1.0f * deltaTime;
+        if (!editMode)
+        {
+            engine.camera.ProcessKeyboard(FORWARD, deltaTime);
+        }
+
+
+        // for now, movement will have to be done in the main file
+
+        glm::vec3 direction = glm::vec3(cos(engine.models[0].RotateY), sin(engine.models[0].RotateY), 0.f);
+        glm::vec3 right = glm::vec3(1, 0., 0.);
+        glm::vec3 z = glm::vec3(0., 1., 0.);
+        float xDot = glm::dot(direction, right);
+        float zDot = glm::dot(direction, z);
+
+        engine.models[0].Position.x += (zDot * 2.0) * deltaTime;
+        engine.models[0].Position.z += (xDot * 2.0) * deltaTime;
+
+        // WILL COME BACK TO THIS. SEE MODEL.CPP
+        //engine.models[0].Position.x += (engine.models[0].zDot * 2.0) * deltaTime;
+        //engine.models[0].Position.x += (engine.models[0].xDot * 2.0) * deltaTime;
+
+
     }
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
     {
-        //engine.camera.ProcessKeyboard(BACKWARD, deltaTime);
-        engine.models[0].Position.z -= 1.0f * deltaTime;
+        if (!editMode)
+        {
+
+        engine.camera.ProcessKeyboard(BACKWARD, deltaTime);
+        }
+
     }
     if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-        //engine.camera.ProcessKeyboard(LEFT, deltaTime);
+    {
+        if (!editMode)
+        {
+
+        engine.camera.ProcessKeyboard(LEFT, deltaTime);
+        }
+        engine.models[0].RotateY += 3.0f * deltaTime;
+
+
+    }
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-        //engine.camera.ProcessKeyboard(RIGHT, deltaTime);
+    {
+        if (!editMode)
+        {
+        engine.camera.ProcessKeyboard(RIGHT, deltaTime);
+
+        }
+        engine.models[0].RotateY -= 3.0f * deltaTime;
+
+
+    }
     if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS)  {
         glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
         editMode = true;
@@ -199,4 +241,3 @@ unsigned int loadTexture(char const* path)
 
     return textureID;
 }
-

@@ -14,6 +14,7 @@ Model::Model(string const& path, bool flip, glm::vec3 pos, glm::vec3 scale, bool
 void Model::Draw(Shader& shader, glm::mat4 projection, glm::mat4 view, glm::vec3 camera)
 {
 
+
     shader.use();
 
     glm::mat4 model = glm::mat4(1.0);
@@ -28,6 +29,11 @@ void Model::Draw(Shader& shader, glm::mat4 projection, glm::mat4 view, glm::vec3
     model = glm::scale(model, this->Scale);
 
     shader.setMat4("model", model);
+    
+    // WILL COME BACK TO THIS
+    //this->Direction = glm::vec3(cos(this->RotateY), sin(this->RotateY), 0.f);
+    //this->xDot = glm::dot(this->Direction, this->Right);
+    //this->zDot = glm::dot(this->Direction, this->Up);
 
     for (unsigned int i = 0; i < meshes.size(); i++)
         meshes[i].Draw(shader);
@@ -182,6 +188,12 @@ vector<Texture> Model::loadMaterialTextures(aiMaterial* mat, aiTextureType type,
         }
     }
     return textures;
+}
+
+
+std::string Model::getPosition()
+{
+    return "{" + std::to_string(this->Position.x) + ',' + std::to_string(this->Position.y) + ',' + std::to_string(this->Position.z) + "}";
 }
 
 unsigned int TextureFromFile(const char* path, const string& directory, bool flip, bool gamma)

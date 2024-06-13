@@ -33,14 +33,20 @@ public:
     bool                gammaCorrection;
     static inline int   id_generator{ 0 };
     int                 ID{};
-    float				RotateX = 0.0;
-    float				RotateY = 0.0;
-    float				RotateZ = 0.0;
+    float				RotateX         = 0.0;
+    float				RotateY         = 0.0;
+    float				RotateZ         = 0.0;
+    float               Yaw             = 0.0;
     glm::vec3			Scale;
     glm::vec3			Position;
-    glm::vec3			RotateDirX = glm::vec3(1., 0., 0.);
-    glm::vec3			RotateDirY = glm::vec3(0., 1., 0.);
-    glm::vec3			RotateDirZ = glm::vec3(0., 0., 1.);
+    glm::vec3			RotateDirX      = glm::vec3(1., 0., 0.);
+    glm::vec3			RotateDirY      = glm::vec3(0., 1., 0.);
+    glm::vec3			RotateDirZ      = glm::vec3(0., 0., 1.);
+    glm::vec3           Up              = glm::vec3(0., 1., 0.);
+    glm::vec3           Right           = glm::vec3(1., 0., 0.);
+    glm::vec3           Direction       = glm::vec3(cos(RotateY), sin(RotateY), 0.f);
+    float               xDot            = glm::dot(Direction, Right);
+    float               zDot            = glm::dot(Direction, Up);
 
     // constructor, expects a filepath to a 3D model.
     Model(string const& path, bool flip = true, glm::vec3 pos = glm::vec3(1.0), glm::vec3 scale = glm::vec3(1.0), bool gamma = false);
@@ -48,6 +54,8 @@ public:
 
     // draws the model, and thus all its meshes
     void Draw(Shader& shader, glm::mat4 projection, glm::mat4 view, glm::vec3 camera);
+
+    std::string getPosition();
 
 private:
      //loads a model with supported ASSIMP extensions from file and stores the resulting meshes in the meshes vector.

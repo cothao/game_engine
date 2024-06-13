@@ -7,7 +7,7 @@ class Player
 {
 public:
 
-	Model player;
+	Model model;
 
 	Player(Model& player);
 
