@@ -2,16 +2,19 @@
 #define PLAYER_H
 
 #include "model.h"
+#include <GLFW/glfw3.h>
 
-class Player
+class Player : virtual public Model
 {
 public:
 
-	Model model;
+	bool Keys[1024];
 
-	Player(Model& player);
+	Player(string const& path, bool flip = true, glm::vec3 pos = glm::vec3(1.0), glm::vec3 scale = glm::vec3(1.0), bool gamma = false);
 
-	virtual void handleInput();
+	Player();
+
+	virtual void handleInput(float DeltaTime);
 };
 
 #endif PLAYER_H

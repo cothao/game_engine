@@ -42,9 +42,11 @@ void Engine::initObjects()
     this->shaderDirectory["lShader"] = Shader("./lightShader.vs", "./lightShader.fs");
     this->shaderDirectory["mShader"] = Shader("./modelShader.vs", "./modelShader.fs");
 
+    pObject = *new Player("./assets/guy/guy.obj", false, glm::vec3(1.0), glm::vec3(0.005));
+
     this->lights = { *new Light(this->shaderDirectory["lShader"], glm::vec3(6., 2., 3.))};
     this->models = {
-        *new Model("./assets/guy/guy.obj", false,glm::vec3(1.0),glm::vec3(0.005)),
+        //*new Model("./assets/obj/Wolf_obj.obj", false,glm::vec3(1.0),glm::vec3(0.5)),
         //* new Model("C:/Users/colli/OneDrive/Documents/resources/backpack.obj", true,glm::vec3(1.0),glm::vec3(0.5)),
         //*new Model("C:/Users/colli/OneDrive/Documents/resources/donut/donut.obj", true,glm::vec3(1.0, 1.0, 5.0),glm::vec3(10.0)),
 
@@ -91,5 +93,13 @@ void Engine::render()
             plane.render(this->projection, this->view, glm::vec3(10.0), glm::vec3(1., -5., 1.), 90.0, glm::vec3(1., 0., 0.), glm::vec3(0.8, 0.8, 0.8), this->lights[0].pos, this->camera.Position);
         }
         
+        pObject.Draw(this->shaderDirectory["mShader"], this->projection, this->view, this->camera.Position);
+
     }
+
+}
+
+void Engine::processInputs(float DeltaTime)
+{
+    this->pObject.handleInput(DeltaTime);
 }

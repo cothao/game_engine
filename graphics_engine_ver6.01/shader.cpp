@@ -38,7 +38,7 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath)
         }
         const char* vShaderCode = vertexCode.c_str();
         const char* fShaderCode = fragmentCode.c_str();
-        std::cout << "VERTEX SHADER\n" << vertexCode << "\n" << "____________" << "\n";
+        //std::cout << "VERTEX SHADER\n" << vertexCode << "\n" << "____________" << "\n";
         // 2. compile shaders
         unsigned int vertex, fragment;
         int success;
@@ -46,7 +46,7 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath)
 
         // vertex Shader
         vertex = glCreateShader(GL_VERTEX_SHADER);
-        std::cout << "VERTEX\n" << vertex << "\n";
+        //std::cout << "VERTEX\n" << vertex << "\n";
         glShaderSource(vertex, 1, &vShaderCode, NULL);
         glCompileShader(vertex);
         // print compile errors if any

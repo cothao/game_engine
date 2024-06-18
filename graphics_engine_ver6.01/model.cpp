@@ -1,5 +1,10 @@
 #include "model.h"
 
+Model::Model()
+{
+
+}
+
 Model::Model(string const& path, bool flip, glm::vec3 pos, glm::vec3 scale, bool gamma)
 	: 
     flip(flip),
@@ -92,6 +97,12 @@ Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene)
         vector.y = mesh->mVertices[i].y;
         vector.z = mesh->mVertices[i].z;
         vertex.Position = vector;
+
+        if (mesh->HasBones())
+        {
+            std::cout << mesh->mBones[i] << "\n";
+        }
+
         // normals
         if (mesh->HasNormals())
         {

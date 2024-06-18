@@ -48,6 +48,8 @@ public:
     float               xDot            = glm::dot(Direction, Right);
     float               zDot            = glm::dot(Direction, Up);
 
+    Model();
+
     // constructor, expects a filepath to a 3D model.
     Model(string const& path, bool flip = true, glm::vec3 pos = glm::vec3(1.0), glm::vec3 scale = glm::vec3(1.0), bool gamma = false);
 
@@ -57,7 +59,7 @@ public:
 
     std::string getPosition();
 
-private:
+protected:
      //loads a model with supported ASSIMP extensions from file and stores the resulting meshes in the meshes vector.
     void loadModel(string const& path);
 

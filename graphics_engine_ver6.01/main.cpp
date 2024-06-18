@@ -5,12 +5,12 @@
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 void scroll_callback(GLFWwindow* window, double xpos, double ypos);
-void processInput(GLFWwindow* window);
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
 unsigned int loadTexture(const char* path);
 const unsigned int SCR_WIDTH = 1600;
 const unsigned int SCR_HEIGHT = 1200;
-bool editMode = false;
-float deltaTime = 0.0f;
+bool editMode = true;
+float DeltaTime = 0.0f;
 float lastFrame = 0.0f; 
 float offset = 0.5f;
 float alphaValue = 0.2f;
@@ -36,6 +36,9 @@ int main() {
 
     glfwSetScrollCallback(engine.window, scroll_callback);
 
+    glfwSetKeyCallback(engine.window, key_callback);
+
+
     gui.initGui(engine);
 
     while (!glfwWindowShouldClose(engine.window))
@@ -43,17 +46,16 @@ int main() {
 
 
         float currentFrame = glfwGetTime();
-        deltaTime = currentFrame - lastFrame;
+        DeltaTime = currentFrame - lastFrame;
         lastFrame = currentFrame;
 
 
-        processInput(engine.window);
-        
         glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         gui.newGuiFrame();
 
         engine.render();
+        engine.processInputs(DeltaTime);
 
         gui.displayGui(engine, editMode);
 
@@ -73,82 +75,79 @@ int main() {
 
 }
 
-void processInput(GLFWwindow* window)
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode)
 {
-    if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-        glfwSetWindowShouldClose(window, true);
 
-    if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+    if (key >= 0 && key <= 1024)
     {
-        if (!editMode)
+        if (action == GLFW_PRESS)
         {
-            engine.camera.ProcessKeyboard(FORWARD, deltaTime);
+            engine.pObject.Keys[key] = true;
         }
-
-
-        // for now, movement will have to be done in the main file
-
-        glm::vec3 direction = glm::vec3(cos(engine.models[0].RotateY), sin(engine.models[0].RotateY), 0.f);
-        glm::vec3 right = glm::vec3(1, 0., 0.);
-        glm::vec3 z = glm::vec3(0., 1., 0.);
-        float xDot = glm::dot(direction, right);
-        float zDot = glm::dot(direction, z);
-
-        engine.models[0].Position.x += (zDot * 2.0) * deltaTime;
-        engine.models[0].Position.z += (xDot * 2.0) * deltaTime;
-
-        // WILL COME BACK TO THIS. SEE MODEL.CPP
-        //engine.models[0].Position.x += (engine.models[0].zDot * 2.0) * deltaTime;
-        //engine.models[0].Position.x += (engine.models[0].xDot * 2.0) * deltaTime;
-
-
-    }
-    if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-    {
-        if (!editMode)
+        else if (action == GLFW_RELEASE)
         {
-
-        engine.camera.ProcessKeyboard(BACKWARD, deltaTime);
+            engine.pObject.Keys[key] = false;
         }
-
-    }
-    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-    {
-        if (!editMode)
-        {
-
-        engine.camera.ProcessKeyboard(LEFT, deltaTime);
-        }
-        engine.models[0].RotateY += 3.0f * deltaTime;
-
-
-    }
-    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-    {
-        if (!editMode)
-        {
-        engine.camera.ProcessKeyboard(RIGHT, deltaTime);
-
-        }
-        engine.models[0].RotateY -= 3.0f * deltaTime;
-
-
-    }
-    if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS)  {
-        glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
-        editMode = true;
-
-    }
-        //glfwSetCursorPosCallback(window, NULL);
-        //std::cout << editMode << "\n";
-
-    if (glfwGetKey(window, GLFW_KEY_R) == GLFW_PRESS)
-    {
-        glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-        editMode = false;
     }
 
-        
+    //if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+    //    glfwSetWindowShouldClose(window, true);
+
+    //if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+    //{
+    //    if (!editMode)
+    //    {
+    //        engine.camera.ProcessKeyboard(FORWARD, DeltaTime);
+    //    }
+
+
+
+    //}
+    //if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+    //{
+    //    if (!editMode)
+    //    {
+
+    //    engine.camera.ProcessKeyboard(BACKWARD, DeltaTime);
+    //    }
+
+    //}
+    //if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+    //{
+    //    if (!editMode)
+    //    {
+
+    //    engine.camera.ProcessKeyboard(LEFT, DeltaTime);
+    //    }
+    //    engine.models[0].RotateY += 3.0f * DeltaTime;
+
+
+    //}
+    //if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+    //{
+    //    if (!editMode)
+    //    {
+    //    engine.camera.ProcessKeyboard(RIGHT, DeltaTime);
+
+    //    }
+    //    engine.models[0].RotateY -= 3.0f * DeltaTime;
+
+    //}
+    //if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS)  {
+    //    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+    //    editMode = true;
+
+    //}
+    //    //glfwSetCursorPosCallback(window, NULL);
+    //    //std::cout << editMode << "\n";
+
+    //if (glfwGetKey(window, GLFW_KEY_R) == GLFW_PRESS)
+    //{
+    //    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+    //    editMode = false;
+    //}
+
+    //    
         
 }
 

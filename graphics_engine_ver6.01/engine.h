@@ -11,6 +11,7 @@
 #include "stb_image.h"
 #include "shader.h"
 #include "model.h"
+#include "player.h"
 #define WIN32_LEAN_AND_MEAN
 #define NO_MIN_MAX
 #define NOMINMAX
@@ -31,19 +32,21 @@ public:
 	std::vector<Plane>				planes;
 	std::vector<Model>				models;
 	std::vector<std::string>		logs;
-	Camera							camera		=	Camera(glm::vec3(10.0f, 3.0f, 1.0f));
+	Camera							camera		=	Camera(glm::vec3(10.0f, 5.0f, 1.0f));
 	glm::mat4						view		=	this->camera.GetViewMatrix();
 	const unsigned int				SCR_WIDTH	=	GetSystemMetrics(SM_CXSCREEN);
 	const unsigned int				SCR_HEIGHT	=	GetSystemMetrics(SM_CYSCREEN);
 	glm::mat4						projection	=	glm::perspective(glm::radians(this->camera.Zoom), (float)this->SCR_WIDTH / (float)this->SCR_HEIGHT, 0.1f, 100.f);
 	GLFWwindow*						window;
 	std::map<std::string, Shader>	shaderDirectory;
+	Player							pObject;
 
 	Engine();
 
 	virtual int			initEngine();
 	virtual void		initObjects();
 	virtual void		render();
+	virtual void		processInputs(float DeltaTime);
 
 };
 
