@@ -55,7 +55,7 @@ int main() {
         gui.newGuiFrame();
 
         engine.render();
-        engine.processInputs(DeltaTime);
+        engine.processInputs(DeltaTime, editMode);
 
         gui.displayGui(engine, editMode);
 
@@ -83,71 +83,15 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
         if (action == GLFW_PRESS)
         {
             engine.pObject.Keys[key] = true;
+            engine.Keys[key] = true;
         }
         else if (action == GLFW_RELEASE)
         {
             engine.pObject.Keys[key] = false;
+            engine.Keys[key] = false;
+
         }
     }
-
-    //if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-    //    glfwSetWindowShouldClose(window, true);
-
-    //if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-    //{
-    //    if (!editMode)
-    //    {
-    //        engine.camera.ProcessKeyboard(FORWARD, DeltaTime);
-    //    }
-
-
-
-    //}
-    //if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-    //{
-    //    if (!editMode)
-    //    {
-
-    //    engine.camera.ProcessKeyboard(BACKWARD, DeltaTime);
-    //    }
-
-    //}
-    //if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-    //{
-    //    if (!editMode)
-    //    {
-
-    //    engine.camera.ProcessKeyboard(LEFT, DeltaTime);
-    //    }
-    //    engine.models[0].RotateY += 3.0f * DeltaTime;
-
-
-    //}
-    //if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-    //{
-    //    if (!editMode)
-    //    {
-    //    engine.camera.ProcessKeyboard(RIGHT, DeltaTime);
-
-    //    }
-    //    engine.models[0].RotateY -= 3.0f * DeltaTime;
-
-    //}
-    //if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS)  {
-    //    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
-    //    editMode = true;
-
-    //}
-    //    //glfwSetCursorPosCallback(window, NULL);
-    //    //std::cout << editMode << "\n";
-
-    //if (glfwGetKey(window, GLFW_KEY_R) == GLFW_PRESS)
-    //{
-    //    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-    //    editMode = false;
-    //}
-
-    //    
         
 }
 

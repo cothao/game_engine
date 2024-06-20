@@ -32,7 +32,8 @@ public:
 	std::vector<Plane>				planes;
 	std::vector<Model>				models;
 	std::vector<std::string>		logs;
-	Camera							camera		=	Camera(glm::vec3(10.0f, 5.0f, 1.0f));
+	//Camera							camera = Camera(glm::vec3(10.0f, 5.0f, 1.0f));
+	Camera							camera		=	Camera(glm::vec3(1.0f, 10.0f, 1.0f));
 	glm::mat4						view		=	this->camera.GetViewMatrix();
 	const unsigned int				SCR_WIDTH	=	GetSystemMetrics(SM_CXSCREEN);
 	const unsigned int				SCR_HEIGHT	=	GetSystemMetrics(SM_CYSCREEN);
@@ -40,14 +41,15 @@ public:
 	GLFWwindow*						window;
 	std::map<std::string, Shader>	shaderDirectory;
 	Player							pObject;
+	bool							Keys[1024];
 
 	Engine();
 
 	virtual int			initEngine();
 	virtual void		initObjects();
 	virtual void		render();
-	virtual void		processInputs(float DeltaTime);
-
+	virtual void		processInputs(float DeltaTime, bool& IsEditing);
+	virtual void		keyInputs(float DeltaTime, bool& IsEditing);
 };
 
 #endif

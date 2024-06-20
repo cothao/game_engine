@@ -39,11 +39,13 @@ public:
     float               Yaw             = 0.0;
     glm::vec3			Scale;
     glm::vec3			Position;
+    glm::vec3			LightPosition;
     glm::vec3			RotateDirX      = glm::vec3(1., 0., 0.);
     glm::vec3			RotateDirY      = glm::vec3(0., 1., 0.);
     glm::vec3			RotateDirZ      = glm::vec3(0., 0., 1.);
     glm::vec3           Up              = glm::vec3(0., 1., 0.);
     glm::vec3           Right           = glm::vec3(1., 0., 0.);
+    glm::vec3           Color           = glm::vec3(1.);
     glm::vec3           Direction       = glm::vec3(cos(RotateY), sin(RotateY), 0.f);
     float               xDot            = glm::dot(Direction, Right);
     float               zDot            = glm::dot(Direction, Up);
@@ -55,7 +57,7 @@ public:
 
 
     // draws the model, and thus all its meshes
-    void Draw(Shader& shader, glm::mat4 projection, glm::mat4 view, glm::vec3 camera);
+    void Draw(Shader& shader, glm::mat4 projection, glm::mat4 view, glm::vec3 camera, glm::vec3 lightPos);
 
     std::string getPosition();
 

@@ -16,13 +16,16 @@ Model::Model(string const& path, bool flip, glm::vec3 pos, glm::vec3 scale, bool
 	loadModel(path);
 };
 
-void Model::Draw(Shader& shader, glm::mat4 projection, glm::mat4 view, glm::vec3 camera)
+void Model::Draw(Shader& shader, glm::mat4 projection, glm::mat4 view, glm::vec3 camera, glm::vec3 lightPos)
 {
 
+    this->LightPosition = lightPos;
 
     shader.use();
 
     glm::mat4 model = glm::mat4(1.0);
+
+
 
     shader.setVec3("viewPos", camera.x, camera.y, camera.z);
     shader.setMat4("view", view);
@@ -32,6 +35,12 @@ void Model::Draw(Shader& shader, glm::mat4 projection, glm::mat4 view, glm::vec3
     model = glm::rotate(model, this->RotateY, this->RotateDirY);
     model = glm::rotate(model, this->RotateZ, this->RotateDirZ);
     model = glm::scale(model, this->Scale);
+
+    shader.setVec3("lightPos", this->LightPosition.x, this->LightPosition.y, this->LightPosition.z);
+    shader.setVec3("color", this->Color.r, this->Color.g, this->Color.b);
+
+    shader.setVec3("lightColor", 1., 1., 1.);
+
 
     shader.setMat4("model", model);
     
