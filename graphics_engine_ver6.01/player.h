@@ -11,6 +11,7 @@ public:
 
 	bool Keys[1024];
 	bool IsCollision = false;
+	glm::vec3 Direction;
 
 	Player(string const& path, bool flip = true, glm::vec3 pos = glm::vec3(1.0), glm::vec3 scale = glm::vec3(1.0), bool gamma = false);
 

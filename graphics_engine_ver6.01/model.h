@@ -1,6 +1,8 @@
 #ifndef MODEL_H
 #define MODEL_H
 
+#define MAX_NUM_BONES_PER_VERTEX 10
+
 #include <glad/glad.h> 
 
 #include <glm/glm.hpp>
@@ -18,9 +20,39 @@
 #include <sstream>
 #include <iostream>
 #include <map>
+#include <set>
 #include <vector>
 
+using uint = unsigned int;
+ 
+struct VertexBoneData
+{
+    uint BoneIDs[MAX_NUM_BONES_PER_VERTEX] = { 0 };
+    float Weights[MAX_NUM_BONES_PER_VERTEX] = { 0.0f };
+
+    VertexBoneData()
+    {
+    }
+
+    void AddBoneData(uint BoneID, float Weight)
+    {
+        for (uint i = 0; i < sizeof(BoneIDs); i++)
+        {
+            if (Weights[i] == 0.0)
+            {
+                BoneIDs[i] = BoneID;
+                Weights[i] = Weight;
+                std::cout << "Bone: " << BoneID << " " << " Weight: " << " " << Weight << " " << "Index: " << i << "\n";
+                return;
+            }
+        }
+    }
+
+};
+
 unsigned int TextureFromFile(const char* path, const string& directory, bool flip, bool gamma = false);
+
+unsigned int TextureFromData(unsigned char* data, int width, int height, int nrComponents, bool flip);
 
 class Model
 {
@@ -73,7 +105,7 @@ protected:
 
      //checks all material textures of a given type and loads the textures if they're not loaded yet.
      //the required info is returned as a Texture struct.
-    vector<Texture> loadMaterialTextures(aiMaterial* mat, aiTextureType type, string typeName);
+    vector<Texture> loadMaterialTextures(aiMaterial* mat, aiTextureType type, const aiScene* scene, string typeName);
 
 };
 #endif

@@ -184,6 +184,7 @@
     <ClInclude Include="renderer.h" />
     <ClInclude Include="stb_image.h" />
     <ClInclude Include="user_input.h" />
+    <ClInclude Include="vector_direction.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\..\Downloads\Donut.glb" />

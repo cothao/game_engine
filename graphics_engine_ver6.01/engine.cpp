@@ -1,4 +1,5 @@
 #include "engine.h"
+#include "vector_direction.h"
 
 Engine::Engine()
 {
@@ -42,7 +43,7 @@ void Engine::initObjects()
     this->shaderDirectory["lShader"] = Shader("./lightShader.vs", "./lightShader.fs");
     this->shaderDirectory["mShader"] = Shader("./modelShader.vs", "./modelShader.fs");
 
-    pObject = *new Player("./assets/guy/guy.obj", false, glm::vec3(1., 0.0, 1.0), glm::vec3(0.005));
+    pObject = *new Player("./assets/player/rp_nathan_animated_003_walking.fbx", false, glm::vec3(1., 0.0, 4.0), glm::vec3(0.005));
 
     this->lights = { *new Light(this->shaderDirectory["lShader"], glm::vec3(6., 2., 3.))};
     this->models = 
@@ -51,7 +52,11 @@ void Engine::initObjects()
         //* new Model("C:/Users/colli/OneDrive/Documents/resources/backpack.obj", true,glm::vec3(1.0),glm::vec3(0.5)),
         //*new Model("C:/Users/colli/OneDrive/Documents/resources/donut/donut.obj", true,glm::vec3(1.0, 1.0, 5.0),glm::vec3(10.0)),
     };
-    this->cubes = {*new Cube(this->shaderDirectory["pShader"], glm::vec3(1.), glm::vec3(pObject.Position.x + .5, .5, 1.), glm::vec3(1., 0.0, 1.))};
+    this->cubes = 
+    {
+        *new Cube(this->shaderDirectory["pShader"], glm::vec3(1.), glm::vec3(1., .5, 1.), glm::vec3(1., 0.0, 1.)),
+        *new Cube(this->shaderDirectory["pShader"], glm::vec3(1.), glm::vec3(3., .5, 1.), glm::vec3(1., 0.0, 1.)),
+    };
     this->planes = { *new Plane(this->shaderDirectory["pShader"])};
     
 }
@@ -125,9 +130,21 @@ void Engine::keyInputs(float DeltaTime, bool& IsEditing)
         {
             if (this->pObject.handleCollision(cube))
             {
-                //this->pObject.Position.x = cube.Position.x - .53;
-                //this->pObject.Position.z = cube.Position.z + .53;
-                logs.push_back("Collision");
+
+                Direction dir = VectorDirection(glm::vec2(this->pObject.Direction.x, this->pObject.Direction.y));
+
+                if (dir == TOP || dir == RSIDE)
+                {
+                this->pObject.Position.x -= 0.05;
+                this->pObject.Position.z -= 0.05;
+                }
+                else if (dir == BOTTOM || dir == LSIDE)
+                {
+                    this->pObject.Position.x += 0.05;
+                    this->pObject.Position.z += 0.05;
+
+                }
+
                 break;
             }
         }

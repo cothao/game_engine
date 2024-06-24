@@ -20,11 +20,11 @@ void Player::handleInput(float DeltaTime, bool& IsEditing)
     {
         if (IsEditing)
         {
-            glm::vec3 direction = glm::vec3(cos(this->RotateY), sin(this->RotateY), 0.f);
+            Direction = glm::vec3(cos(this->RotateY), sin(this->RotateY), 0.f);
             glm::vec3 right = glm::vec3(1, 0., 0.);
             glm::vec3 z = glm::vec3(0., 1., 0.);
-            float xDot = glm::dot(direction, right);
-            float zDot = glm::dot(direction, z);
+            float xDot = glm::dot(Direction, right);
+            float zDot = glm::dot(Direction, z);
 
             if (!IsCollision)
             {
